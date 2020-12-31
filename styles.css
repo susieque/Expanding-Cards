@@ -60,9 +60,10 @@ body {
 	flex: 5;
 }
 
-/*for only active photo. all inactive is opacity to 0, invisiable */
+/*for only active photo. all inactive is opacity to 0, invisiable ease-in delay of 0.4seconds*/
 .panel.active h3 {
 	opacity: 1;
+	transition: opacity 0.3s ease-in 0.4s;  
 }
 
 /*to show 3 out of the 5 narrow ones that are inactive*/ /*any styles that are put in here are only going to take effect if the screen is under 40 pixels */ /*it takes up 100 viewport width right now, or 100% of viewport. So set width of container to 90vw, viewport width */
