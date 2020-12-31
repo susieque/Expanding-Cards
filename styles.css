@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+/* Below is a Universal selector, want to apply to everything. This is box-sizing property. Something he does on about every project or use css. So if we add padding or border on to an element, it doesn't affect width of it.   */
+* {
+	box-sizing: border-box;
+}
+
+/* flex to center everything */ /* flex-direction: column; */ /*flex direction to column so the h2's are vertical and not side to side */
+/*since its a flex box, use line items and want a line item center*/ /* if flex box is column, line items goig to aligning horizontally, if a row it would be veritcal.*/
+/*justify-content to center it vertical.*/
+/*height to 100 viewport, means take up entire height of browser, the viewport */ /*Now its centered both ways. top, bottom, left, right. */
+/*overflow hidden, don't want scroll bars to be shown by default. */
+body {
+	font-family: 'Muli', sans-serif;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+	overflow: hidden;
+	margin: 0;
+}
+
+/*remeber we have a container wrapped around all the panels, all I want to do here is display this as flex box. Now it turns it into a flex row. Look in index.html */
+/*If we wanted them on top of each other we'd do flex-firection column, but we don't, we want them in a row. */
+/*it takes up 100 viewport width right now, or 100% of viewport. So set width of container to 90vw, viewport width */
+.container {
+	display: flex;
+	width: 90vw;
+}
+
+/*to preseve rounded corners on lg screens */
+/*Want to position the j3's and side absolute, meaning h3 container div (containter element) which is the panel has to be relative */
+/*When we change width for the active, when we click and it turns active, want it to not just flick to bigger size or bigger width, but to have transition*/
+.panel {
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	height: 80vh;
+	border-radius: 50px;
+	color: #fff;
+	cursor: pointer;
+	flex: 0.5;
+	margin: 10px;
+	position: relative;
+	transition: flex 0.7s ease-in;
+}
+
+/* the h3 text */ /*have h3 to show if active */
+.panel h3 {
+	font-size: 24px;
+	position: absolute;
+	bottom: 20px;
+	left: 20px;
+	margin: 0;
+	opacity: 0;
+}
+
+/*now it's wide*/
+.panel.active {
+	flex: 5;
+}
+
+/*for only active photo. all inactive is opacity to 0, invisiable */
+.panel.active h3 {
+	opacity: 1;
+}
+
+/*to show 3 out of the 5 narrow ones that are inactive*/ /*any styles that are put in here are only going to take effect if the screen is under 40 pixels */ /*it takes up 100 viewport width right now, or 100% of viewport. So set width of container to 90vw, viewport width */
+@media (max-width: 480px) {
+	.container {
+		width: 100vw; /*on small screens to take up more room*/
+	}
+
+	/*to remove the last 2 panels of the 6 panels use pseudo selector by using colon */ /*Now on small screens there's only 3 images*/
+	.panel:nth-of-type(4),
+	.panel:nth-of-type(5) {
+		display: none;
+	}
+}
